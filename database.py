@@ -1,17 +1,14 @@
 # Establishing the necessary database connections and creating the tables for the application
 
 import sqlite3
-from pathlib import Path
-
-DATABASE = Path(__file__).resolve().parent / "certtrack.db"
 
 
 def get_connection():
 
-    connection = sqlite3.connect(DATABASE)
+    connection = sqlite3.connect("certtrack.db")
     connection.row_factory = sqlite3.Row
 
-    connection.execute("PRAGMA foreign_keys = ON")
+    connection.execute("PRAGMA foreign_keys = ON") 
 
     return connection
 
