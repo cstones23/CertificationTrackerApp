@@ -1,0 +1,42 @@
+.table-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+}
+
+.add-action {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+}
+
+.add-action button {
+    background-color: #1e3a5f;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.records-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.records-actions button {
+    padding: 7px 12px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background-color: #258beb;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+}
