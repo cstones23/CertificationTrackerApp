@@ -1,9 +1,61 @@
+
 {% extends "base.html" %}
 
-{% block title %}Certs{% endblock %}
+{% block title %}Certification Tracker - Certifications{% endblock %}
 
-{% block header %}Certs{% endblock %}
+{% block header %}Microsoft Certifications{% endblock %}
 
 {% block content %}
-<h2>Certs Test</h2>
+
+<div class="user-session">
+    <span>User: {{ session["username"] }}</span>
+    <span>Role: {{ session["role"] | capitalize }}</span>
+</div>
+
+<form action="{{ url_for('logout') }}" method="POST">
+    <button type="submit">Logout</button>
+</form>
+
+<div class="add-action">
+    <button type="button" class="add-button">Add Certification</button>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Certification Name</th>
+            <th>Code</th>
+            <th>Category</th>
+            <th>Validity (Months)</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for cert in certifications %}
+        <tr>
+            <td>{{ cert["certification_name"] }}</td>
+            <td>{{ cert["certification_code"] }}</td>
+            <td>{{ cert["category"] }}</td>
+            <td>
+                {{ cert["validity_months"]
+                   if cert["validity_months"] is not none
+                   else "No Expiry" }}
+            </td>
+            <td>{{ cert["description"] }}</td>
+            <td>
+                <div class="records-actions">
+                    <button type="button" class="edit-button">Edit</button>
+
+                    {% if session["role"] == "admin" %}
+                        <button type="button" class="delete-button">Delete</button>
+                    {% endif %}
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
 {% endblock %}
